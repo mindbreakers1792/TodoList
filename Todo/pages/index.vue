@@ -9,12 +9,15 @@
         Tu Recordatorio Favorito
       </h2>
       <div class="links">
-        <input type="text" class="form-control" placeholder="Recordar" name="" value=""><br>
+        <input v-model="message">
+        <input type="text" v-model="valor" class="form-control" placeholder="Recordar" name="" value=""><br>
         <button
+          @click="object.push(valor.value)"
           target="_blank"
           class="btn btn-lg btn-rounded btn-block btn-outline-success">Agregar</button>
       </div>
       <div class="">
+        {{ message }}
         <ul id="v-for-object" class="demo">
           <li v-for="value in object" :key='value'>
             {{ value }}
@@ -37,10 +40,8 @@ export default {
   },
   data(){
     return {
-      object:{
-        firstName: 'Fernando',
-        lastName: 'Ruiz'
-      }
+      object:['Fernando','Ruiz','velasco'],
+      valor:''
     }
   }
 }
