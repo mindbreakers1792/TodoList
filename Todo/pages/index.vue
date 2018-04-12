@@ -11,13 +11,14 @@
       <div class="links">
         <input type="text" v-model="message" class="form-control" placeholder="Recordar" name="" value=""><br>
         <button
-          @click="object.push({message})"
+          @click="object.push(message)"
           target="_blank"
           class="btn btn-lg btn-rounded btn-block btn-outline-success">Agregar</button>
       </div>
       <div class="">
         <ul id="v-for-object" class="demo">
           <li v-for="value in object" :key='value'>
+            <button class="btn btn-xs btn-danger" @click="deleteEvent(value)">Delete</button>
             {{ value }}
           </li>
         </ul>
@@ -41,8 +42,15 @@ export default {
       object:['Fernando','Ruiz','velasco'],
       valor:''
     }
+  },
+  methods: {
+    deleteEvent: function(event) {
+      this.object.splice(this.object.indexOf(event), 1);
+    }
   }
 }
+
+
 </script>
 
 <style>
